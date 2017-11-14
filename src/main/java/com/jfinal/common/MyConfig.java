@@ -6,9 +6,8 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.controller.IndexController;
 import com.jfinal.core.JFinal;
-import com.jfinal.route.AdminRoute;
-import com.jfinal.route.FrontRoute;
 import com.jfinal.template.Engine;
 
 /**
@@ -47,6 +46,9 @@ public class MyConfig extends JFinalConfig{
 
 	@Override
 	public void configRoute(Routes me) {
+
+		//第一讲
+		me.add("/",IndexController.class);
 		
 		//4.Route的基本使用
 		//me.add("/",IndexController.class);
@@ -56,10 +58,8 @@ public class MyConfig extends JFinalConfig{
 		//me.add("/blog", BlogController.class, "/blog");
 		//me.add("/user", UserController.class, "/user");
 		
-		me.add(new FrontRoute());
-		me.add(new AdminRoute());
-		
-		
+		//me.add(new FrontRoute());
+		//me.add(new AdminRoute());
 		
 	}
 	
