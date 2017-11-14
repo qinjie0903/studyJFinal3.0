@@ -1,0 +1,8 @@
+
+# Editor directories and files
+.classpath
+.settings
+.project
+target
+*.class
+*.jar
