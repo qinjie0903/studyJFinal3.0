@@ -47,13 +47,15 @@ public class MyConfig extends JFinalConfig{
 	@Override
 	public void configRoute(Routes me) {
 
-		//第一讲
-		me.add("/",IndexController.class);
-		
-		//4.Route的基本使用
+		//第1讲 搭建Jfinal框架
 		//me.add("/",IndexController.class);
 		
-		//5.Route路由的分包技法
+		//第4讲.Route的基本使用
+		//me.add("/",IndexController.class)<=>me.add("/",IndexController.class,"")
+		//me.add("/",IndexController.class);
+		me.add("/", IndexController.class, "/abc");
+		
+		//第5讲.Route路由的分包技法
 		//me.add("/", IndexController.class, "/abc");
 		//me.add("/blog", BlogController.class, "/blog");
 		//me.add("/user", UserController.class, "/user");
@@ -69,11 +71,13 @@ public class MyConfig extends JFinalConfig{
 
 	@Override
 	public void afterJFinalStart() {
+		//系统启动后完成回调
 		System.out.println("---afterJFinalStart---");
 	}
 
 	@Override
 	public void beforeJFinalStop() {
+		//系统关闭前完成回调
 		System.out.println("---beforeJFinalStop---");
 	}
 	
