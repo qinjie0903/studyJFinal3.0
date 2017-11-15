@@ -11,8 +11,14 @@ import com.jfinal.core.Controller;
 */
 public class IndexController extends Controller {
 	
+	/**
+	 * action定义模板（public 无参 无返回值）
+	 */
 	public void index() {
-		setAttr("msg", "hello jfinal3.0");
+		//第8讲.Controller介绍简术和Action定义
+		String msg = getPara("msg","defaultMsg");
+		String[] checkbox=getParaValues("test");//接收checkbox内容
+		setAttr("msg", "hello jfinal3.0 "+ msg);
 		renderTemplate("index.html");
 	}
 }

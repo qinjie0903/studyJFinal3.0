@@ -1,6 +1,7 @@
 package com.jfinal.route;
 
 import com.jfinal.config.Routes;
+import com.jfinal.controller.HelloController;
 import com.jfinal.controller.IndexController;
 import com.jfinal.interceptor.FrontRouteInterceptor;
 
