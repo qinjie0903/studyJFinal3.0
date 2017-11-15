@@ -6,8 +6,12 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.controller.BlogController;
 import com.jfinal.controller.IndexController;
+import com.jfinal.controller.UserController;
 import com.jfinal.core.JFinal;
+import com.jfinal.route.AdminRoute;
+import com.jfinal.route.FrontRoute;
 import com.jfinal.template.Engine;
 
 /**
@@ -53,15 +57,13 @@ public class MyConfig extends JFinalConfig{
 		//第4讲.Route的基本使用
 		//me.add("/",IndexController.class)<=>me.add("/",IndexController.class,"")
 		//me.add("/",IndexController.class);
-		me.add("/", IndexController.class, "/abc");
-		
-		//第5讲.Route路由的分包技法
 		//me.add("/", IndexController.class, "/abc");
 		//me.add("/blog", BlogController.class, "/blog");
 		//me.add("/user", UserController.class, "/user");
 		
-		//me.add(new FrontRoute());
-		//me.add(new AdminRoute());
+		//第5讲.Route路由的分包技法
+		me.add(new FrontRoute());
+		me.add(new AdminRoute());
 		
 	}
 	
