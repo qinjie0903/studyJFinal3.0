@@ -2,6 +2,7 @@ package com.jfinal.route;
 
 import com.jfinal.config.Routes;
 import com.jfinal.controller.IndexController;
+import com.jfinal.interceptor.FrontRouteInterceptor;
 
 /**
 * <p>Title: FrontRoute</p>
@@ -16,6 +17,7 @@ public class FrontRoute extends Routes {
 	@Override
 	public void config() {
 		setBaseViewPath("/front");//前端的页面放在/front路径下
+		addInterceptor(new FrontRouteInterceptor());
 		add("/", IndexController.class);
 	}
 

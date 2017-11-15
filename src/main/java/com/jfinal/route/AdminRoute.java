@@ -2,6 +2,7 @@ package com.jfinal.route;
 
 import com.jfinal.config.Routes;
 import com.jfinal.controller.AdminController;
+import com.jfinal.interceptor.AdminRouteInterceptor;
 
 /**
 * <p>Title: AdminRoute</p>
@@ -15,6 +16,7 @@ public class AdminRoute extends Routes{
 	@Override
 	public void config() {
 		setBaseViewPath("/WEB-INF");
+		addInterceptor(new AdminRouteInterceptor());
 		add("/admin", AdminController.class);
 	}
 

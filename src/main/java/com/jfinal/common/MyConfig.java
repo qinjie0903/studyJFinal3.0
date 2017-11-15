@@ -65,6 +65,8 @@ public class MyConfig extends JFinalConfig{
 		me.add(new FrontRoute());
 		me.add(new AdminRoute());
 		
+		//第6讲.路由级别拦截器RouteInterceptor
+		
 	}
 	
 	public static void main(String[] me) {
