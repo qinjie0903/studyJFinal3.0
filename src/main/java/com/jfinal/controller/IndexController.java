@@ -1,6 +1,7 @@
 package com.jfinal.controller;
 
 import com.jfinal.core.Controller;
+import com.jfinal.model.Blog;
 
 /**
 * <p>Title: IndexController</p>
@@ -19,6 +20,19 @@ public class IndexController extends Controller {
 		String msg = getPara("msg","defaultMsg");
 		String[] checkbox=getParaValues("test");//接收checkbox内容
 		setAttr("msg", "hello jfinal3.0 "+ msg);
+		
+		getModel(Blog.class);
 		renderTemplate("index.html");
+	}
+	
+	public void add() {
+		renderTemplate("add.html");
+	}
+	
+	public void doAdd() {
+		//第10讲.Controller中getModel的使用方法
+		//System.out.println(getModel(Blog.class));
+		System.out.println(getModel(Blog.class,"b"));//别名
+		renderText("提交成功");
 	}
 }
