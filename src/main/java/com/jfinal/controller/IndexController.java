@@ -2,6 +2,7 @@ package com.jfinal.controller;
 
 import com.jfinal.core.Controller;
 import com.jfinal.model.Blog;
+import com.jfinal.render.ViewType;
 
 /**
 * <p>Title: IndexController</p>
@@ -23,6 +24,15 @@ public class IndexController extends Controller {
 		
 		getModel(Blog.class);
 		renderTemplate("index.html");
+		
+		//render("");
+		
+		//第12讲.Controller中Render的讲解
+		//服务器端跳转
+		//forwardAction("/add");
+		//浏览器重定向
+		//redirect("/add");
+		
 	}
 	
 	public void add() {
@@ -34,5 +44,9 @@ public class IndexController extends Controller {
 		//System.out.println(getModel(Blog.class));
 		System.out.println(getModel(Blog.class,"b"));//别名
 		renderText("提交成功");
+	}
+	
+	public void sss() {
+		//renderFreeMarker("");
 	}
 }

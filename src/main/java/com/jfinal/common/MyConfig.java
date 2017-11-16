@@ -15,6 +15,7 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.model.Blog;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.render.ViewType;
 import com.jfinal.route.AdminRoute;
 import com.jfinal.route.FrontRoute;
 import com.jfinal.template.Engine;
@@ -39,6 +40,9 @@ public class MyConfig extends JFinalConfig {
 	public void configConstant(Constants me) {
 		PropKit.use("a_little_config.txt");//使用配置文件
 		me.setDevMode(true);// 开发模式
+		//设置引擎 默认ViewType.JFINAL_TEMPLATE
+		me.setViewType(ViewType.JFINAL_TEMPLATE);
+		me.setError404View("error404.html");
 	}
 
 	@Override
