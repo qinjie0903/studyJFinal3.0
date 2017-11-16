@@ -1,5 +1,7 @@
 package com.jfinal.controller;
 
+import java.io.File;
+
 import com.jfinal.core.Controller;
 import com.jfinal.model.Blog;
 import com.jfinal.render.ViewType;
@@ -47,6 +49,20 @@ public class IndexController extends Controller {
 	}
 	
 	public void sss() {
+		
+		//第13讲.Controller其他讲解
+		
+		//文件上传和下载
+		getFile();//文件上传
+		renderFile(new File("/upload"));//文件下载
 		//renderFreeMarker("");
+		//必须先调用getFile系列方法，才能使用getPara系列方法
+		getFile();
+		getPara("file");
+		
+		//session
+		setSessionAttr("s1", "1232132");//设置session
+		getSessionAttr("s1");//得到session
+		removeSessionAttr("s1");//移除session
 	}
 }
