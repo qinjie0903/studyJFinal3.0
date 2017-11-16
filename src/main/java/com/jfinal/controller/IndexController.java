@@ -2,9 +2,13 @@ package com.jfinal.controller;
 
 import java.io.File;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.interceptor.ClassInterceptor;
+import com.jfinal.interceptor.MethodInterceptor;
 import com.jfinal.model.Blog;
 import com.jfinal.render.ViewType;
+
 
 /**
 * <p>Title: IndexController</p>
@@ -13,6 +17,8 @@ import com.jfinal.render.ViewType;
 * @author qinjie
 * @date Oct 29, 2017 10:21:50 PM
 */
+
+@Before(ClassInterceptor.class)
 public class IndexController extends Controller {
 	
 	/**
@@ -65,4 +71,14 @@ public class IndexController extends Controller {
 		getSessionAttr("s1");//得到session
 		removeSessionAttr("s1");//移除session
 	}
+	
+	/**
+	 * 测试Method Interceptor 用法
+	 */
+	
+	@Before(MethodInterceptor.class)
+	public void testMethod() {
+		renderTemplate("index.html");
+	}
+	
 }

@@ -11,6 +11,7 @@ import com.jfinal.controller.IndexController;
 import com.jfinal.controller.UserController;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.handler.ContextPathHandler;
+import com.jfinal.interceptor.GlobalInterceptor;
 import com.jfinal.kit.PropKit;
 import com.jfinal.model.Blog;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -58,7 +59,11 @@ public class MyConfig extends JFinalConfig {
 
 	@Override
 	public void configInterceptor(Interceptors me) {
-
+		//第15讲.Interceptor具体使用
+		//配置Global Interceptor 一般用户权限检查和日志
+		me.add(new GlobalInterceptor());
+		//me.addGlobalActionInterceptor(globalActionInterceptor);
+		//me.addGlobalServiceInterceptor(globalServiceInterceptor);
 	}
 
 	@Override
