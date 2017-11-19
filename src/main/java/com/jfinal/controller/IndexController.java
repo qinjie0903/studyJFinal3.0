@@ -189,4 +189,10 @@ public class IndexController extends Controller {
 
 	}
 	
+	public void sqlManger() {
+		String sql = Blog.dao.getSql("blogList");
+		renderJson(Blog.dao.find(sql));
+		//renderText(sql);
+	}
+	
 }

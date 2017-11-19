@@ -12,6 +12,7 @@ import com.jfinal.controller.UserController;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.interceptor.GlobalInterceptor;
+import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
 import com.jfinal.model.Blog;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -81,10 +82,16 @@ public class MyConfig extends JFinalConfig {
 		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"),PropKit.get("user"),PropKit.get("password"));
 		me.add(druidPlugin);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
+		//第23讲.SQL管理与生成（一）
+		//设置SQL文件的起始文件夹
+		arp.setBaseSqlTemplatePath(PathKit.getWebRootPath()+"/WEB-INF");
+		arp.addSqlTemplate("sql/demo.sql");
+		
+		
 		arp.addMapping("t_blog", Blog.class);//数据库映射，需要在加入PluginList之前完成配置
 		me.add(arp);
 		
-		//第21讲.Db+Record模式的使用
+		//第22讲.Db+Record模式的使用
 		//配置Oracle驱动
 		//druidPlugin.setDriverClass("oracle.jdbc.driver.OracleDriver");
 		
