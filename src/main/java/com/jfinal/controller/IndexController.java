@@ -6,6 +6,8 @@ import com.jfinal.aop.Before;
 import com.jfinal.aop.Duang;
 import com.jfinal.aop.Enhancer;
 import com.jfinal.core.Controller;
+import com.jfinal.interceptor.AInterceptor;
+import com.jfinal.interceptor.BInterceptor;
 import com.jfinal.interceptor.ClassInterceptor;
 import com.jfinal.interceptor.MethodInterceptor;
 import com.jfinal.model.Blog;
@@ -112,4 +114,14 @@ public class IndexController extends Controller {
 		renderTemplate("index.html");
 	}
 
+	/**
+	 * 拦截器栈(先执行的放左边)
+	 */
+	@Before({AInterceptor.class,BInterceptor.class})
+	public void testInterceptorStack() {
+		//第18讲.拦截器栈的使用
+		renderTemplate("index.html");
+	}
+	
+	
 }
