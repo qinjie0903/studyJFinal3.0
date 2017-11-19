@@ -14,7 +14,9 @@ import com.jfinal.interceptor.ClassInterceptor;
 import com.jfinal.interceptor.GlobalInterceptor;
 import com.jfinal.interceptor.MethodInterceptor;
 import com.jfinal.model.Blog;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.render.ViewType;
 import com.jfinal.service.InjectorInterceptor;
 import com.jfinal.service.ServiceImpl;
@@ -74,6 +76,13 @@ public class IndexController extends Controller {
 		
 		Blog blog = getModel(Blog.class,"b");
 		blog.save();
+		
+		//Db+Record模式的使用
+		Record record = new Record();
+		record.set("name", "123");
+		Db.save("t_blog", record);
+		
+		
 		renderText("提交成功");
 	}
 

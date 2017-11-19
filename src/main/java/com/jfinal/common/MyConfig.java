@@ -15,6 +15,8 @@ import com.jfinal.interceptor.GlobalInterceptor;
 import com.jfinal.kit.PropKit;
 import com.jfinal.model.Blog;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.CaseInsensitiveContainerFactory;
+import com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.route.AdminRoute;
@@ -81,7 +83,18 @@ public class MyConfig extends JFinalConfig {
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
 		arp.addMapping("t_blog", Blog.class);//数据库映射，需要在加入PluginList之前完成配置
 		me.add(arp);
+		
+		//第21讲.Db+Record模式的使用
+		//配置Oracle驱动
+		//druidPlugin.setDriverClass("oracle.jdbc.driver.OracleDriver");
+		
+		//JFinal默认是mysql，可以通过以下配置oracle数据库
+		//arp.arp.setDialect(new PostgreSqlDialect());
+	
+		//配置属性名（字段名）大小写不敏感容器工厂
+		//arp.setContainerFactory(new CaseInsensitiveContainerFactory());
 	}
+	
 
 	@Override
 	public void configRoute(Routes me) {
