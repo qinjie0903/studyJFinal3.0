@@ -3,12 +3,14 @@ package com.jfinal.controller;
 import java.io.File;
 
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
 import com.jfinal.aop.Duang;
 import com.jfinal.aop.Enhancer;
 import com.jfinal.core.Controller;
 import com.jfinal.interceptor.AInterceptor;
 import com.jfinal.interceptor.BInterceptor;
 import com.jfinal.interceptor.ClassInterceptor;
+import com.jfinal.interceptor.GlobalInterceptor;
 import com.jfinal.interceptor.MethodInterceptor;
 import com.jfinal.model.Blog;
 import com.jfinal.render.ViewType;
@@ -37,6 +39,8 @@ public class IndexController extends Controller {
 	/**
 	 * action定义模板（public 无参 无返回值）
 	 */
+	//第19讲.Clear注解符的使用
+	@Clear({ClassInterceptor.class,GlobalInterceptor.class})
 	public void index() {
 		// 第8讲.Controller介绍简术和Action定义
 		String msg = getPara("msg", "defaultMsg");
