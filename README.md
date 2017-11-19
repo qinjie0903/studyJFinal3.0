@@ -26,6 +26,16 @@ JFinal从入门到入魔教程
 
 注解：
 Before 添加拦截
-Clear  清楚拦截
+Clear  清除拦截
+
+## 第20讲.Interceptor总结	
+## 拦截器的优先级
+1、Global
+2、Inject（InjectInterceptor RouteInterceptor）
+3、Class
+4、Method
+
+
+
 
 
