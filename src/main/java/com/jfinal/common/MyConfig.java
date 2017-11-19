@@ -19,6 +19,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.route.AdminRoute;
 import com.jfinal.route.FrontRoute;
+import com.jfinal.service.InjectorInterceptor;
 import com.jfinal.template.Engine;
 
 /**
@@ -62,8 +63,10 @@ public class MyConfig extends JFinalConfig {
 		//第15讲.Interceptor具体使用
 		//配置Global Interceptor 一般用户权限检查和日志
 		me.add(new GlobalInterceptor());
-		//me.addGlobalActionInterceptor(globalActionInterceptor);
-		//me.addGlobalServiceInterceptor(globalServiceInterceptor);
+		//me.addGlobalActionInterceptor(globalActionInterceptor);和me.add(new GlobalInterceptor());底层是一样的。
+		//第16讲.Duang duang特效（一）
+		//整个项目所有的业务，有注解的配置都会拦截
+		me.addGlobalServiceInterceptor(new InjectorInterceptor());
 	}
 
 	@Override
