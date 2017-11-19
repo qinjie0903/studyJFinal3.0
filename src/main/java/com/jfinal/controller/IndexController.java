@@ -1,6 +1,7 @@
 package com.jfinal.controller;
 
 import java.io.File;
+import java.util.List;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
@@ -13,6 +14,7 @@ import com.jfinal.interceptor.ClassInterceptor;
 import com.jfinal.interceptor.GlobalInterceptor;
 import com.jfinal.interceptor.MethodInterceptor;
 import com.jfinal.model.Blog;
+import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.render.ViewType;
 import com.jfinal.service.InjectorInterceptor;
 import com.jfinal.service.ServiceImpl;
@@ -64,10 +66,14 @@ public class IndexController extends Controller {
 		renderTemplate("add.html");
 	}
 
+	
 	public void doAdd() {
 		// 第10讲.Controller中getModel的使用方法
 		// System.out.println(getModel(Blog.class));
-		System.out.println(getModel(Blog.class, "b"));// 别名
+		//System.out.println(getModel(Blog.class, "b"));// 别名
+		
+		Blog blog = getModel(Blog.class,"b");
+		blog.save();
 		renderText("提交成功");
 	}
 
@@ -127,5 +133,51 @@ public class IndexController extends Controller {
 		renderTemplate("index.html");
 	}
 	
+	
+	//第21讲.ActiveRecordPlugin的简介及Model的CRUD
+	/**
+	 * 查询所有blog信息
+	 */
+	public void query() {
+		String sql = "select * from t_blog order by id desc";
+		List<Blog> blogs = Blog.dao.find(sql);
+		
+		//查询指定ID的属性
+		Blog blog = Blog.dao.findById(1);
+		System.out.println("blog:"+blog);
+		//查询某个字段的值
+		System.out.println("blog name:"+blog.getStr("name"));
+		
+		
+		Blog blog2 = Blog.dao.findFirst(sql);
+		System.out.println("blog2:"+blog2);
+		//分页
+		Page<Blog> bPage = Blog.dao.paginate(1, 1, "select * "," from t_blog order by id desc");
+		
+		renderJson(bPage);
+		//renderJson(blogs);
+	}
+	
+	/**
+	 * 更新
+	 */
+	public void update() {
+		Blog blog = new Blog();
+		//指定更新的记录，单条
+		blog.set("id", 1);
+		blog.set("name", "jfinal 神！！！");
+		blog.update();
+		renderText("更新成功");
+	}
+	
+	/**
+	 * 删除
+	 */
+	public void delete() {
+		Blog.dao.deleteById(4);
+		//System.out.println("删除成功");
+		renderText("删除成功");
+
+	}
 	
 }

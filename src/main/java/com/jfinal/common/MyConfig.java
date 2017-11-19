@@ -79,8 +79,8 @@ public class MyConfig extends JFinalConfig {
 		DruidPlugin druidPlugin = new DruidPlugin(PropKit.get("jdbcUrl"),PropKit.get("user"),PropKit.get("password"));
 		me.add(druidPlugin);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
+		arp.addMapping("t_blog", Blog.class);//数据库映射，需要在加入PluginList之前完成配置
 		me.add(arp);
-		arp.addMapping("t_blog", Blog.class);
 	}
 
 	@Override
