@@ -66,7 +66,9 @@ public class MyConfig extends JFinalConfig {
 		//me.addGlobalActionInterceptor(globalActionInterceptor);和me.add(new GlobalInterceptor());底层是一样的。
 		//第16讲.Duang duang特效（一）
 		//整个项目所有的业务，有注解的配置都会拦截
-		me.addGlobalServiceInterceptor(new InjectorInterceptor());
+		//me.addGlobalServiceInterceptor(new InjectorInterceptor());
+		
+		
 	}
 
 	@Override

@@ -4,11 +4,13 @@ import java.io.File;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Duang;
+import com.jfinal.aop.Enhancer;
 import com.jfinal.core.Controller;
 import com.jfinal.interceptor.ClassInterceptor;
 import com.jfinal.interceptor.MethodInterceptor;
 import com.jfinal.model.Blog;
 import com.jfinal.render.ViewType;
+import com.jfinal.service.InjectorInterceptor;
 import com.jfinal.service.ServiceImpl;
 import com.jfinal.service.ServiceImpl1;
 
@@ -96,10 +98,16 @@ public class IndexController extends Controller {
 		serviceImpl.testInject();
 		serviceImpl.common();
 		
-		System.out.println("---------");
+		System.out.println("---第一种方式------");
 		ServiceImpl1 serviceImpl1 = Duang.duang(ServiceImpl1.class);
 		serviceImpl1.testInject();
 		serviceImpl1.common();
+		//第17讲.Duang duang特效（二）
+		System.out.println("---第二种方式------");
+		ServiceImpl1 serviceImpl2 = Duang.duang(ServiceImpl1.class,InjectorInterceptor.class);
+		//ServiceImpl1 serviceImpl3 = Enhancer.enhance(ServiceImpl1.class);
+		serviceImpl2.testInject();
+		serviceImpl2.common();
 		
 		renderTemplate("index.html");
 	}
